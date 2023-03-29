@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center" style="margin-top: 75px;">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Giriş Sayfası</h1>
+            </div>
+            <div class="card-body">
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email">Mail Adresi</label>
+                        <input 
+                            class="form-control" 
+                            type="email" 
+                            ngModel 
+                            name="email"
+                            id="email" 
+                            required
+                            email="true"
+                            minlength="3"
+                            #email
+                            [appValid]="email.validity.valid">
+                        <div class="invalid-feedback">
+                            Geçerli bir mail adresi girin!
+                        </div>  
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="password">Şifre</label>
+                        <input
+                          class="form-control"
+                          type="password"
+                          ngModel
+                          name="password"
+                          id="password"
+                          #password
+                          required
+                          [appValid]="password.validity.valid">
+                          <div class="invalid-feedback">
+                            Şifre alanı boş olamaz!
+                          </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <button [disabled]="!loginForm.valid" class="btn btn-outline-primary w-100">Giriş Yap</button>
+                        <a routerLink="/register" style="float: right;">Kayıt Ol</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center" style="margin-top: 75px;">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Kayıt Sayfası</h1>
+            </div>
+            <div class="card-body">
+                <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                    <div class="form-group">
+                        <label for="name">Ad Soyad</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          [(ngModel)]="model.name"
+                          name="name"
+                          id="name"
+                          #name
+                          [appValid]="name.validity.valid"
+                          required
+                          minlength="3">
+                        <div class="invalid-feedback">
+                            Ad soyad alanı en az 3 karakter olmalıdır!
+                        </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="email">Mail Adresi</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          [(ngModel)]="model.email"
+                          name="email"
+                          id="email"
+                          #email
+                          [appValid]="email.validity.valid"
+                          required
+                          minlength="3">
+                        <div class="invalid-feedback">
+                            Geçerli bir mail adresi yazın!
+                        </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="password">Şifre</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          [(ngModel)]="model.password"
+                          name="password"
+                          id="password"
+                          #password
+                          [appValid]="password.validity.valid"
+                          required>
+                        <div class="invalid-feedback">
+                            Şifre alanı boş olamaz!
+                        </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <button [disabled]="!registerForm.valid" class="btn btn-outline-success w-100">Kayıt Ol</button>
+                        <a routerLink="/login" style="float: right;">Giriş Yap</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

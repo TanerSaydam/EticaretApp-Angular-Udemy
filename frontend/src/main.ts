@@ -1,7 +1,29 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { CommonModule } from "@angular/common";
+import { importProvidersFrom } from "@angular/core";
+import { bootstrapApplication, BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+import { provideHttpClient } from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppModule } from './app/app.module';
+import { ToastrModule } from "ngx-toastr";
 
+import { AppComponent } from "./app/app.component";
+import { routes } from "./app/router";
+import { NgxSpinnerModule } from "ngx-spinner";
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent,{
+  providers: [
+    provideHttpClient(),
+    importProvidersFrom(
+      BrowserModule,
+      CommonModule,
+      BrowserAnimationsModule,
+      NgxSpinnerModule,
+      ToastrModule.forRoot({
+        closeButton: true,
+        progressBar: true
+      }),
+      RouterModule.forRoot(routes)
+    )
+  ]
+})
