@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ValidDirective } from '../directives/valid.directive';
+import { BlankComponent } from '../components/blank/blank.component';
 
 
 
@@ -12,13 +13,15 @@ import { ValidDirective } from '../directives/valid.directive';
     CommonModule,
     FormsModule,
     RouterModule,
-    ValidDirective
+    ValidDirective,
+    BlankComponent
   ],
   exports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    ValidDirective
+    ValidDirective,
+    BlankComponent
   ]
 })
 export class SharedModule { }

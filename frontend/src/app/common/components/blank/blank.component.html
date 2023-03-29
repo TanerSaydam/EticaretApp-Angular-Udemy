@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header">
+        <h4 style="float: left;">{{title}}</h4>
+        <nav aria-label="breadcrumb" style="float: right;">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active" *ngIf="title != 'Ana Sayfa'" aria-current="page">{{title}}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-header">
+        <h4>{{sectionTitle}}</h4>
+    </div>
+    <div class="card-body">       
+       <ng-content></ng-content>
+    </div>
+</div>
