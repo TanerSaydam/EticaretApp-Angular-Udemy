@@ -21,8 +21,7 @@ export class CategoryService {
     this._http.post<MessageResponseModel>("categories/add",model, res=> callBack(res));
   }
 
-  update(_id: string, name: string, callBack: (res:MessageResponseModel)=> void){
-    let model = {_id: _id,name: name};
+  update(model: CategoryModel, callBack: (res:MessageResponseModel)=> void){    
     this._http.post<MessageResponseModel>("categories/update",model, res=> callBack(res));
   }
 

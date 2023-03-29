@@ -39,7 +39,7 @@
                         <td>{{index + 1}}</td>
                         <td>{{category.name}}</td>
                         <td>
-                            <button class="btn btn-outline-warning btn-sm">
+                            <button class="btn btn-outline-warning btn-sm" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-outline-danger btn-sm mx-1">
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-
+<!-- Ekleme Modal  -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -84,4 +84,39 @@
         </form>
       </div>
     </div>
+</div>
+<!-- Ekleme Modal  -->
+
+<!-- Güncelleme Modal -->
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="updateModalLabel">Kategori Güncelle</h1>
+          <button type="button" id="updateModalCloseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form autocomplete="off" #updateForm="ngForm" (ngSubmit)="update(updateForm)">        
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="updateName">Kategori Adı</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="updateCategory.name"
+                      name="updateName"
+                      id="updateName"
+                      #updateName
+                      [appValid]="updateName.validity.valid"
+                      required
+                      minlength="3">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+            </div>
+        </form>
+      </div>
+    </div>
   </div>
+<!-- Güncelleme Modal -->
