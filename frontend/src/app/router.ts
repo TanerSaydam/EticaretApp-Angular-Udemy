@@ -32,6 +32,12 @@ export const routes: Routes = [
                     .then(c=> c.ProductsComponent)
             },
             {
+                path: "products/add",
+                loadComponent: 
+                    ()=> import("./components/products/components/product-add/product-add.component")
+                    .then(c=> c.ProductAddComponent)
+            },
+            {
                 path: "categories",
                 loadComponent: 
                     ()=> import("./components/categories/categories.component")
