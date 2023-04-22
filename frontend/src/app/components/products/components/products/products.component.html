@@ -1,0 +1,89 @@
+<app-blank title="Ürünler" sectionTitle="Ürünler Listesi">
+    <!-- Ekleme ve Search -->
+    <div class="form-group">
+        <button class="btn btn-outline-primary" routerLink="/">
+            <i class="fa fa-plus"></i>
+        </button>
+        <div class="col-md-3" style="float: right;">
+        <input class="form-control" type="search" [(ngModel)]="request.search" placeholder="Aranacak değeri yazın..." (keyup)="search()" (search)="getAll(1)"/>
+    </div>
+    </div>
+    <!-- Ekleme ve Search -->
+
+    <!-- Liste -->
+    <app-table [heads]='[
+    "#",
+    "Ürün Resmi",
+    "Ürün Adı",
+    "Kategoriler",
+    "Stok Bilgisi",
+    "Birim Fiyatı",
+    "Oluştulma Tarihi",
+    "Aktif/Pasif",
+    "İşlemler"]'>
+    <tr *ngFor="let product of result.datas let index = index">
+        <td>{{index + 1}}</td>
+        <td>
+            <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" width="50"/>
+        </td>
+        <td>{{product.name}}</td>
+        <td>
+            <ul>
+                <li *ngFor="let category of product.categories">
+                    {{category.name}}
+                </li>
+            </ul>
+        </td>
+        <td>{{product.stock}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.createdDate | date: 'dd.MM.yyyy HH:mm:sss'}}</td>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>                
+            </div>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning btn-sm" title="Güncelle">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm mx-1" title="Sil">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>
+    </tr>
+    </app-table>
+    <!-- Liste -->
+
+    <!-- Pagination -->
+    <select name="pageSize" id="pageSize" class="form-control text-center" [(ngModel)]="request.pageSize" style="width: 65px; float: left;">
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>50</option>
+        <option>100</option>
+        <option>200</option>
+        <option>500</option>
+        <option>1000</option>
+    </select>
+    <nav style="float: right;">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''">
+                <a class="page-link" (click)="getAll(1)">İlk</a>
+            </li>
+            <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''">
+                <a class="page-link" (click)="getAll(request.pageNumber - 1)">Önceki</a>
+            </li>
+            <li class="page-item" *ngFor="let p of pageNumbers">
+                <a class="page-link" [ngClass]="result.pageNumber == p? 'active': ''" (click)="getAll(p)">{{p}}</a>
+            </li>
+            <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''">
+                <a class="page-link" (click)="getAll(request.pageNumber - 1)">Sonraki</a>
+            </li>
+            <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''">
+                <a class="page-link" (click)="getAll(result.totalPageCount)">Son</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Pagination -->
+
+</app-blank>

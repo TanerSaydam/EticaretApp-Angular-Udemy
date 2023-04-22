@@ -8,5 +8,5 @@ export class ProductModel{
     price: number = 0;
     isActive: boolean = true;
     createdDate: string = "";
-    imageUrl: any[] = [];
+    imageUrls: any[] = [];
 }
