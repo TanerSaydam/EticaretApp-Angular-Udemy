@@ -8,31 +8,20 @@
         </div>
     </div>
 
-    <div class="form-group mt-2">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr style="background-color: #f1f1f1;">
-                    <th>#</th>
-                    <th>Kategori Adı</th>
-                    <th>İşlemler</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let category of categories | categoryPipe: search let index = index">
-                    <td>{{index + 1}}</td>
-                    <td>{{category.name}}</td>
-                    <td>
-                        <button class="btn btn-outline-warning btn-sm" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button (click)="removeById(category)" class="btn btn-outline-danger btn-sm mx-1">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <app-table [heads]='["#","Kategori Adı","İşlemler"]'>
+        <tr *ngFor="let category of categories | categoryPipe: search let index = index">
+            <td>{{index + 1}}</td>
+            <td>{{category.name}}</td>
+            <td>
+                <button class="btn btn-outline-warning btn-sm" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button (click)="removeById(category)" class="btn btn-outline-danger btn-sm mx-1">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </app-table>    
 </app-blank>
 
 <!-- Ekleme Modal  -->

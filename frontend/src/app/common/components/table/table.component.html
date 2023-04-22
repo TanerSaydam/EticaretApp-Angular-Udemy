@@ -1,0 +1,14 @@
+<div class="form-group mt-2">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr style="background-color: #f1f1f1;">
+                <th *ngFor="let head of heads">
+                    {{head}}
+                </th>               
+            </tr>
+        </thead>
+        <tbody>
+            <ng-content></ng-content>
+        </tbody>
+    </table>
+</div>
