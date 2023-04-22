@@ -83,6 +83,17 @@ router.post("/", async(req, res)=> {
     });
 });
 
+//Ürünün Aktif/Pasif Durumunu Değiştir
+router.post("/changeActiveStatus", async(req, res)=> {
+    response(res, async()=> {
+        const {_id} = req.body;
+        let product = await Product.findById(_id);
+        product.isActive = !product.isActive;
+        await Product.findByIdAndUpdate(_id, product);
+        res.json({message: "Ürünün durumu başarıyla değiştirildi!"});
+    });
+});
+
 //Ürünü Id'ye Göre Getir
 router.post("/getById", async(req, res)=> {
     response(res, async()=>{
