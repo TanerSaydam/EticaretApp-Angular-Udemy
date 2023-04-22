@@ -63,4 +63,11 @@ export class ProductsComponent implements OnInit {
       })
     })
   }
+
+  changeProductStatuc(id: string){
+    let model = {_id: id};
+      this._product.changeActiveStatus(model,res=>{
+        this._toastr.info(res.message);        
+      });
+  }
 }

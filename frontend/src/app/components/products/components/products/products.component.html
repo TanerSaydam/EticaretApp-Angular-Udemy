@@ -39,7 +39,12 @@
         <td>{{product.createdDate | date: 'dd.MM.yyyy HH:mm:sss'}}</td>
         <td>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>                
+                <input
+                  class="form-check-input"
+                  (change)="changeProductStatuc(product._id)"
+                  type="checkbox"
+                  [value]="product.isActive"
+                  id="flexCheckChecked">
             </div>
         </td>
         <td>
