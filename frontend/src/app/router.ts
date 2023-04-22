@@ -38,6 +38,12 @@ export const routes: Routes = [
                     .then(c=> c.ProductAddComponent)
             },
             {
+                path: "products/update/:value",
+                loadComponent: 
+                    ()=> import("./components/products/components/product-update/product-update.component")
+                    .then(c=> c.ProductUpdateComponent)
+            },
+            {
                 path: "categories",
                 loadComponent: 
                     ()=> import("./components/categories/categories.component")
