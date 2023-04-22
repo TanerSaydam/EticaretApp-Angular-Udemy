@@ -53,4 +53,14 @@ export class ProductsComponent implements OnInit {
       this.getAll(1);
     }
   }
+
+  removeById(id: string){
+    this._swal.callSwal("Ürünü silmek istiyor musunuz?","Ürünü Sil","Sil",()=>{
+      let model = {_id: id};
+      this._product.removeById(model,res=>{
+        this._toastr.info(res.message);
+        this.getAll(this.request.pageNumber);
+      })
+    })
+  }
 }
