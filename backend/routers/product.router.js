@@ -82,3 +82,12 @@ router.post("/", async(req, res)=> {
         res.json(model);
     });
 });
+
+//Ürünü Id'ye Göre Getir
+router.post("/getById", async(req, res)=> {
+    response(res, async()=>{
+        const {_id}= req.body;
+        let product = await Product.findById(_id);
+        res.json(product);
+    });
+});
