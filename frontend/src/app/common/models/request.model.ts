@@ -3,5 +3,6 @@ export class RequestModel{
     pageSize: number = 10;
     search: string = "";
     categoryName: string = "Tümü";
+    categoryId: string = "";
     priceFilter: string = "0";
 }
