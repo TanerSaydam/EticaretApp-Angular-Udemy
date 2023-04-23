@@ -30,7 +30,7 @@
             <h3 class="alert alert-danger">
                 Ödenecek: {{sum | trCurrency}} ₺
             </h3>
-            <button *ngIf="baskets.length > 0" class="btn btn-danger w-100">
+            <button (click)="createOrder()" *ngIf="baskets.length > 0" class="btn btn-danger w-100">
                 Ödeme Yap
             </button>
         </div>
